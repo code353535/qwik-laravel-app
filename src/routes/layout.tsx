@@ -5,12 +5,12 @@ import Header from "../components/layouts/header";
 import Footer from "../components/layouts/footer";
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
-  // Control caching for this request for best performance and to reduce hosting costs:
+  // En iyi performansı elde etmek ve barındırma maliyetlerini azaltmak için bu isteğin önbelleğe alınmasını kontrol edin:
   // https://qwik.dev/docs/caching/
   cacheControl({
-    // Always serve a cached response by default, up to a week stale
+    // Her zaman varsayılan olarak önbelleğe alınmış bir yanıt sunar; bir haftaya kadar.
     staleWhileRevalidate: 60 * 60 * 24 * 7,
-    // Max once every 5 seconds, revalidate on the server to get a fresh version of this page
+    // Maksimum her 5 saniyede bir, bu sayfanın yeni bir sürümünü almak için sunucuda yeniden doğrulama yapın.
     maxAge: 5,
   });
 };
@@ -19,7 +19,7 @@ export default component$(() => {
   return (
     <>
       <Header />
-      <main class="p-4 bg-gray-100">
+      <main class="bg-white">
         <Slot />
       </main>
       <Footer />
